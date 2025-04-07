@@ -1,58 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RhyneeAI</title>
-    <link rel="icon" href="icon/Meme-PNG-Photos.png" type="image/x-icon">
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap" rel="stylesheet">
+    <title>Valentine Letter</title>
+    <link rel="stylesheet" href="css/index.css">
 </head>
-
 <body>
-    <audio id="bgm" src="audio/lovely.mp3"></audio>
-
-    <div class='container'>
-        <h3>
-            <span style="--i: 0;">GIFT</span>
-            <span style="--i: 1;">FOR</span>
-            <span style="--i: 2;">YOU</span>
-            <span style="--i: 3;"><3</span>
-        </h3>
-
-        <div class='envelope-wrapper'>
-            <div class='envelope'>
-                <div class='letter'>
-                    <div class='text'>
-                        <strong> 
-                            Dear Walawe,
-                        </strong>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam rem esse porro magnam perspiciatis. Iusto nisi repellat nemo dolorum voluptate.
-                        </p>
-                        <p class='sincerely'>
-                            Sincerely, Walaue < 3
-                        </p>
-                    </div>
-                </div>
+    <div class="valentine-frame">
+        <h1>💌 Send a Letter 💌</h1>
+        <form id="valentine-form">
+            <div class="form-group">
+                <label for="pengirim">From:</label>
+                <input type="text" id="pengirim" name="pengirim" placeholder="Your Name" required>
             </div>
-            <div class='hearts'>
-                <div class="one"></div>
-                <div class="two"></div>
-                <div class="three"></div>
-                <div class="four"></div>
-                <div class="five"></div>
-                <div class="six"></div>
+            <div class="form-group">
+                <label for="penerima">To:</label>
+                <input type="text" id="penerima" name="penerima" placeholder="Recipient's Name" required>
             </div>
-            <div class='heart'></div>
-            <div class='typing-effect'></div>
-        </div>
+            <div class="form-group">
+                <label for="body">Message:</label>
+                <textarea id="body" name="body" placeholder="Write your heartfelt message here..." required></textarea>
+            </div>
+            <button type="button" id="submit-btn">Send Letter ❤️</button>
+        </form>
     </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="script.js"></script>
+    <script src="js/index.js"></script>
 </body>
 </html>

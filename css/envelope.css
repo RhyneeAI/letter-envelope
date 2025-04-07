@@ -31,9 +31,15 @@ body{
   background-color: #f08080;
   box-shadow: 0 0 40px var(--shadow-color);
   animation: float 3s ease-in-out infinite;
-  border-radius: 15px; 
-  overflow: hidden; 
-  margin-top: -100px;
+  border-radius: 15px !important;  
+  /* overflow: hidden;  */
+  margin-top: -200px;
+}
+
+@media screen and (max-width: 768px) {
+  .envelope-wrapper {
+    margin-top: -80px; 
+  }
 }
 
 @keyframes float {
@@ -151,7 +157,6 @@ body{
   }
 }
 
-
 .flap > .envelope:before {
   transform: rotateX(180deg);
   z-index: 0;
@@ -221,7 +226,7 @@ body{
 .one {
     left: 20px;
     top: -160px;
-    animation: heart 1s ease-out infinite;
+    animation: heart 2.65s ease-out infinite;
     animation-delay: 2s
 }
 
@@ -282,7 +287,7 @@ body{
         width: 0;
     }
     to {
-        width: 52%;
+        width: 100%;
     }
 }
 
@@ -291,14 +296,12 @@ body{
         border-right-color: red;
     }
     50% {
-        border-right-color: transparent; /* Cursor blinks */
+        border-right-color: transparent; 
     }
     100% {
         border-right-color: red;
     }
 }
-
-
 
 @keyframes heart {
     0% {
@@ -332,7 +335,7 @@ h3 {
     transform: translateX(-50%); 
     display: inline-block; 
     animation: wave 2s ease-in-out infinite; 
-    margin-bottom: -80px;
+    margin-top: -50px;
 }
 
 h3 span {

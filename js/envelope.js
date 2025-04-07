@@ -30,16 +30,33 @@ document.querySelector('.heart').addEventListener('click', function () {
     const envelope = document.querySelector('.envelope-wrapper');
     const computedTransform = window.getComputedStyle(heart).transform;
 
-    const typingEffect = document.querySelector('.typing-effect');
-    const nameText = `    Sincerely, Walawe 💖`;
+    const cookies = document.cookie.split('; ').find(row => row.startsWith('letterData='));
+    if (cookies) {
+        const letterData = JSON.parse(cookies.split('=')[1]);
+        document.getElementById("dear").textContent = `Dear ${letterData.penerima}`;
+        document.getElementById("letter-body").textContent = letterData.body;
+        document.getElementById("sincerely").textContent = `Sincerely, ${letterData.pengirim}`;
 
+        const typingEffect = document.querySelector('.typing-effect');
+        const nameText = `    My Beloved, ${letterData.penerima} 💖`;
 
-    typingEffect.textContent = nameText;
-    typingEffect.style.animation = 'none'; 
-    void typingEffect.offsetWidth; 
-    typingEffect.style.animation = 'typing 4s steps(24, end) forwards, blinkCursor 0.5s step-end infinite';
-    console.log(typingEffect.textContent.split(''));
+        typingEffect.textContent = nameText;
 
+        const canvas = document.createElement('canvas');
+        const context = canvas.getContext('2d');
+
+        const computedStyle = window.getComputedStyle(typingEffect);
+        const font = `${computedStyle.fontSize} ${computedStyle.fontFamily}`;
+        context.font = font;
+        const textWidth = context.measureText(nameText).width;
+        typingEffect.style.maxWidth = `${textWidth - 10}px`;
+        typingEffect.style.animation = 'none'; 
+        void typingEffect.offsetWidth;
+        typingEffect.style.animation = `typing 5s steps(${Math.ceil(textWidth / 10)}, end) forwards, blinkCursor 0.5s step-end infinite`;
+        // console.log(typingEffect.textContent.split(''));
+    } else {
+        window.location.href = 'index.html';
+    }
 
     const audio = document.getElementById('bgm');
 
@@ -64,11 +81,3 @@ document.querySelector('.heart').addEventListener('click', function () {
         }, 1000);
     }
 });
-
-
-
-
-
-
-
-
