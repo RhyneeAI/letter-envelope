@@ -22,6 +22,8 @@ body{
   display: grid;
   place-items: center;
 }
+
+
 .container > .envelope-wrapper {
   background: var(--bg-envelope-color);
   box-shadow: 0 0 40px var(--shadow-color);
@@ -157,10 +159,26 @@ body{
   }
 }
 
-.flap > .envelope:before {
+.flap > .envelope::before {
   transform: rotateX(180deg);
-  z-index: 0;
+  pointer-events: none; /* << wajib! */
+  z-index: 0; /* pastikan ini di bawah tombol */
+  transition-delay: 0.7s;
 }
+
+.flap .envelope::after {
+  pointer-events: none; /* Supaya tidak bisa intercept klik */
+  z-index: 0;            /* Pastikan dia di bawah tombol */
+}
+
+.envelope::after {
+  transition: all 0.5s ease;
+}
+/* Default (tertutup) */
+.envelope-wrapper > .envelope::before {
+  transition-delay: 0.7s;
+}
+
 .flap > .envelope > .letter {
   bottom: 100px;
   transform: scale(1.5) translateY(0);
@@ -170,6 +188,9 @@ body{
   animation: none !important; 
   transform: rotate(90deg);
   transition: transform 0.6s ease; 
+}
+.envelope-wrapper .heart {
+  transition: transform 0.6s ease;
 }
 
 @keyframes heartOpen {
@@ -352,3 +373,32 @@ h3 span {
         transform: translateY(-10px); /* Move letters upward */
     }
 }
+
+
+
+
+
+
+.button-container {
+  display: none;
+  text-align: center;
+  margin-top: 10px;
+  z-index: 5;
+  position: relative;
+}
+
+.flap .button-container {
+  display: block;
+}
+
+.redirect-button {
+  background-color: var(--envelope-cover);
+  color: white;
+  font-size: 6px;
+  border-radius: 3px;
+  position: relative;
+  z-index: 6;
+  pointer-events: auto;
+}
+
+
