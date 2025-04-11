@@ -295,7 +295,7 @@ body{
     white-space: nowrap; 
     overflow: hidden; 
     padding: 0; 
-    border-right: 3px solid red; 
+    border-right: 3px solid #ff4d73; 
     animation: typing 5s steps(24, end) forwards, blinkCursor 0.5s step-end infinite;
     top: 120%;
     left: 50%; 
