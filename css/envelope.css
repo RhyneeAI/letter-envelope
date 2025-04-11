@@ -1,9 +1,9 @@
 :root{
   --primary: white;
-  --bg-color: #fae1dd;
-  --bg-envelope-color: #f08080;
+  --bg-color: #ffe3e8;
+  --bg-envelope-color: #ffb3c6;
   --envelope-tab: #d8a6a3;
-  --envelope-cover: #e01937;
+  --envelope-cover: #ff4d73;
   --shadow-color: #b85c5c;
   --heart-color: #d6d1d1;
 }
@@ -290,7 +290,7 @@ body{
     position: absolute; 
     font-family: 'Caveat', cursive;
     font-size: 24px;
-    color: #dd453b;
+    color: #ff4d73;
     text-align: center;
     white-space: nowrap; 
     overflow: hidden; 
@@ -351,7 +351,7 @@ h3 {
     font-family: 'Caveat', cursive;
     font-size: 42px; 
     font-weight: 800;
-    color: #dd453b; 
+    color: #ff4d73; 
     text-align: center;
     transform: translateX(-50%); 
     display: inline-block; 
