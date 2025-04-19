@@ -14,7 +14,7 @@ document.getElementsByClassName('heart')[0].addEventListener('click', () => {
 document.addEventListener('DOMContentLoaded', function () {
     const audio = document.getElementById('bgm');
     const currentPage = window.location.pathname; 
-    const desiredPage = "/desired-page.html"; 
+    const desiredPage = "https://rhyneeai.github.io/letter-envelope/envelope.html"; 
     if (currentPage === desiredPage) {
         audio.play().catch((error) => {
             console.log('Audio playback failed. User interaction might be required.', error);
@@ -30,33 +30,42 @@ document.querySelector('.heart').addEventListener('click', function () {
     const envelope = document.querySelector('.envelope-wrapper');
     const computedTransform = window.getComputedStyle(heart).transform;
 
-    const cookies = document.cookie.split('; ').find(row => row.startsWith('letterData='));
-    if (cookies) {
-        const letterData = JSON.parse(cookies.split('=')[1]);
-        document.getElementById("dear").textContent = `Dear ${letterData.penerima}`;
-        document.getElementById("letter-body").textContent = letterData.body;
-        document.getElementById("sincerely").textContent = `Sincerely, ${letterData.pengirim}`;
+    const urlParams = new URLSearchParams(window.location.search);
+    const data = urlParams.get('data');
 
-        const typingEffect = document.querySelector('.typing-effect');
-        const nameText = `    My Beloved, ${letterData.penerima} 💖`;
+    if (data) {
+        try {
+            const letterData = JSON.parse(decodeURIComponent(data));
 
-        typingEffect.textContent = nameText;
+            document.getElementById("dear").textContent = `Dear ${letterData.penerima}`;
+            document.getElementById("letter-body").textContent = letterData.body;
+            document.getElementById("sincerely").textContent = `Sincerely, ${letterData.pengirim}`;
 
-        const canvas = document.createElement('canvas');
-        const context = canvas.getContext('2d');
+            const typingEffect = document.querySelector('.typing-effect');
+            const nameText = `    My Beloved, ${letterData.penerima} 💖`;
 
-        const computedStyle = window.getComputedStyle(typingEffect);
-        const font = `${computedStyle.fontSize} ${computedStyle.fontFamily}`;
-        context.font = font;
-        const textWidth = context.measureText(nameText).width;
-        typingEffect.style.maxWidth = `${textWidth - 10}px`;
-        typingEffect.style.animation = 'none'; 
-        void typingEffect.offsetWidth;
-        typingEffect.style.animation = `typing 5s steps(${Math.ceil(textWidth / 10)}, end) forwards, blinkCursor 0.5s step-end infinite`;
-        // console.log(typingEffect.textContent.split(''));
+            typingEffect.textContent = nameText;
+
+            const canvas = document.createElement('canvas');
+            const context = canvas.getContext('2d');
+
+            const computedStyle = window.getComputedStyle(typingEffect);
+            const font = `${computedStyle.fontSize} ${computedStyle.fontFamily}`;
+            context.font = font;
+            const textWidth = context.measureText(nameText).width;
+
+            typingEffect.style.maxWidth = `${textWidth - 10}px`;
+            typingEffect.style.animation = 'none'; 
+            void typingEffect.offsetWidth; // restart animation
+            typingEffect.style.animation = `typing 5s steps(${Math.ceil(textWidth / 10)}, end) forwards, blinkCursor 0.5s step-end infinite`;
+        } catch (err) {
+            console.error("Failed to parse data:", err);
+            window.location.href = 'index.html';
+        }
     } else {
         window.location.href = 'index.html';
     }
+
 
     const audio = document.getElementById('bgm');
 

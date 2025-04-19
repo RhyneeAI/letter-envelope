@@ -36,9 +36,39 @@ body{
   margin-top: -200px;
 }
 
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .envelope-wrapper {
+    margin-top: -150px !important;
+  }
+  h3 {
+    margin-top: -50px !important; 
+  }
+}
+
 @media screen and (max-width: 768px) {
   .envelope-wrapper {
-    margin-top: -80px; 
+    margin-top: -250px !important; 
+  }
+  h3 {
+    margin-top: -100px !important;
+  }
+}
+
+@media screen and (max-width: 1366px) {
+  .envelope-wrapper {
+    margin-top: -90px; 
+  }
+}
+
+@media screen and (max-width: 1600px) {
+  .envelope-wrapper {
+    margin-top: -190px !important; 
+  }
+  h3 {
+    margin-top: -110px !important;
+  }
+  .typing-effect {
+    margin-top: -10px;
   }
 }
 

@@ -85,3 +85,80 @@ button:hover {
 button:active {
     background-color: #cc173d;
 }
+
+#qrModal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s ease forwards;
+}
+
+.modal-content {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    position: relative;
+    transform: scale(0.8);
+    opacity: 0;
+    animation: slideUp 0.3s ease forwards;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    width: 300px;
+}
+
+#qrcode {
+    margin: 2rem auto;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    border: 2px dotted lightgrey;
+    padding: 20px;
+}
+
+.modal-btn {
+    background-color: #156082;
+    color: #fff;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    margin: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.modal-btn:hover {
+    background-color: #104c67;
+}
+
+.modal-btn:active {
+    transform: scale(0.95);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+@keyframes slideDown {
+    to {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+}

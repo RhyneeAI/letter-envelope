@@ -22,9 +22,20 @@
                 <label for="body">Message:</label>
                 <textarea id="body" name="body" placeholder="Write your heartfelt message here..." required></textarea>
             </div>
+
             <button type="button" id="submit-btn">Send Letter ❤️</button>
         </form>
     </div>
+
+    <div id="qrModal">
+        <div class="modal-content">
+            <h3>Scan this QR Code</h3>
+            <div id="qrcode"></div>
+            <button id="download-btn">Download QR</button>
+            <button id="close-btn">Close</button>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <script src="js/index.js"></script>
 </body>
 </html>
