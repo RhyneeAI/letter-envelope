@@ -1,7 +1,13 @@
 const envelope = document.querySelector('.envelope-wrapper');
-envelope.addEventListener('click', () => {
+const heart = document.querySelector('.heart');
+
+// toggle flap saat klik hati
+heart.addEventListener('click', () => {
   envelope.classList.toggle('flap');
+  console.log('Flap toggled:', envelope.classList.contains('flap'));
 });
+
+
 
 document.getElementsByClassName('heart')[0].addEventListener('click', () => {
     const audio = document.getElementById('bgm');
@@ -36,7 +42,6 @@ document.querySelector('.heart').addEventListener('click', function () {
     if (data) {
         try {
             const letterData = JSON.parse(decodeURIComponent(data));
-
             document.getElementById("dear").textContent = `Dear ${letterData.penerima}`;
             document.getElementById("letter-body").textContent = letterData.body;
             document.getElementById("sincerely").textContent = `Sincerely, ${letterData.pengirim}`;
@@ -90,3 +95,14 @@ document.querySelector('.heart').addEventListener('click', function () {
         }, 1000);
     }
 });
+
+
+
+
+function redirectToDrive() {
+    if (confirm("Kamu akan diarahkan ke folder Google Drive! Masukan no pesanan anda di drive ya! Apakah kamu ingin melanjutkan?")) {
+        window.location.href = "https://drive.google.com/drive/folders/12Zyvb04BOdORpXw0A3VOiT5RMXjI0Svv?usp=drive_link";
+    } else {
+        console.log("Pengalihan dibatalkan oleh pengguna.");
+    }
+}

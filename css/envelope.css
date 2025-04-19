@@ -1,9 +1,9 @@
 :root{
   --primary: white;
-  --bg-color: #fae1dd;
-  --bg-envelope-color: #f08080;
+  --bg-color: #ffebf0;
+  --bg-envelope-color: #ffb3c6;
   --envelope-tab: #d8a6a3;
-  --envelope-cover: #e01937;
+  --envelope-cover: #ff4d73;
   --shadow-color: #b85c5c;
   --heart-color: #d6d1d1;
 }
@@ -22,6 +22,8 @@ body{
   display: grid;
   place-items: center;
 }
+
+
 .container > .envelope-wrapper {
   background: var(--bg-envelope-color);
   box-shadow: 0 0 40px var(--shadow-color);
@@ -187,10 +189,26 @@ body{
   }
 }
 
-.flap > .envelope:before {
+.flap > .envelope::before {
   transform: rotateX(180deg);
-  z-index: 0;
+  pointer-events: none; /* << wajib! */
+  z-index: 0; /* pastikan ini di bawah tombol */
+  transition-delay: 0.7s;
 }
+
+.flap .envelope::after {
+  pointer-events: none; /* Supaya tidak bisa intercept klik */
+  z-index: 0;            /* Pastikan dia di bawah tombol */
+}
+
+.envelope::after {
+  transition: all 0.5s ease;
+}
+/* Default (tertutup) */
+.envelope-wrapper > .envelope::before {
+  transition-delay: 0.7s;
+}
+
 .flap > .envelope > .letter {
   bottom: 100px;
   transform: scale(1.5) translateY(0);
@@ -200,6 +218,9 @@ body{
   animation: none !important; 
   transform: rotate(90deg);
   transition: transform 0.6s ease; 
+}
+.envelope-wrapper .heart {
+  transition: transform 0.6s ease;
 }
 
 @keyframes heartOpen {
@@ -299,12 +320,12 @@ body{
     position: absolute; 
     font-family: 'Caveat', cursive;
     font-size: 24px;
-    color: #dd453b;
+    color: #ff4d73;
     text-align: center;
     white-space: nowrap; 
     overflow: hidden; 
     padding: 0; 
-    border-right: 3px solid red; 
+    border-right: 3px solid #ff4d73; 
     animation: typing 5s steps(24, end) forwards, blinkCursor 0.5s step-end infinite;
     top: 120%;
     left: 50%; 
@@ -360,7 +381,7 @@ h3 {
     font-family: 'Caveat', cursive;
     font-size: 42px; 
     font-weight: 800;
-    color: #dd453b; 
+    color: #ff4d73; 
     text-align: center;
     transform: translateX(-50%); 
     display: inline-block; 
@@ -382,3 +403,32 @@ h3 span {
         transform: translateY(-10px); /* Move letters upward */
     }
 }
+
+
+
+
+
+
+.button-container {
+  display: none;
+  text-align: center;
+  margin-top: 10px;
+  z-index: 5;
+  position: relative;
+}
+
+.flap .button-container {
+  display: block;
+}
+
+.redirect-button {
+  background-color: var(--envelope-cover);
+  color: white;
+  font-size: 6px;
+  border-radius: 3px;
+  position: relative;
+  z-index: 6;
+  pointer-events: auto;
+}
+
+
